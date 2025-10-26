@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運動生態平台｜投資人簡報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #172a8c;
+      --accent: #22d3ee;
+      --text: #1f2933;
+      --muted: #4b5563;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --border: rgba(29, 78, 216, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(29, 78, 216, 0.98), rgba(34, 211, 238, 0.85));
+      color: #fff;
+      padding: clamp(3rem, 5vw, 5rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.35), transparent 55%);
+      z-index: 0;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      margin: 0 0 1rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      margin: 0;
+      color: rgba(255,255,255,0.85);
+      max-width: 640px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.15);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .hero-card p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1rem;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .contact-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.25);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    main {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: clamp(3rem, 6vw, 4.5rem) 0 5rem;
+      display: grid;
+      gap: clamp(3rem, 5vw, 4rem);
+    }
+
+    section {
+      display: grid;
+      gap: 1.75rem;
+      background: var(--card);
+      border-radius: 22px;
+      padding: clamp(2.25rem, 4vw, 3rem);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .stat-card {
+      border-radius: 18px;
+      padding: 1.4rem;
+      background: linear-gradient(160deg, rgba(29, 78, 216, 0.1), rgba(34, 211, 238, 0.1));
+      border: 1px solid rgba(29, 78, 216, 0.15);
+    }
+
+    .stat-value {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 0 0 0.35rem;
+    }
+
+    .stat-label {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .content-grid.two-col {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      border-radius: 16px;
+      padding: 1.5rem;
+      background: #f9fbff;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .card h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    li {
+      color: var(--muted);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      background: rgba(29, 78, 216, 0.1);
+      color: var(--primary-dark);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid rgba(29, 78, 216, 0.18);
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .comparison-card {
+      background: linear-gradient(150deg, rgba(29, 78, 216, 0.08), rgba(15, 23, 42, 0.08));
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 18px;
+      padding: 1.5rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .comparison-card h4 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      color: #15803d;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2.25rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0.65rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.15);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 1.2rem;
+      top: 1.1rem;
+      width: 2px;
+      height: calc(100% - 1rem);
+      background: rgba(148, 163, 184, 0.4);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-time {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 1.5rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .team-role {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .team-bio {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .quote {
+      background: rgba(29, 78, 216, 0.08);
+      border-left: 4px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 3rem 0 4rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        text-align: center;
+      }
+
+      .contact-bar {
+        justify-content: center;
+      }
+
+      section {
+        padding: 2rem;
+      }
+
+      .timeline-item {
+        padding-left: 1.8rem;
+      }
+
+      .timeline-item::before {
+        left: 0.3rem;
+      }
+
+      .timeline-item::after {
+        left: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div>
+        <h1>運動生態平台</h1>
+        <p>打造結合教練推薦、寄賣供應、統一物流與全球代購的全方位運動器材服務生態系，瞄準台灣200億運動用品市場商機。</p>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h3>四大核心模式</h3>
+          <p>教練推薦、寄賣供應、統一物流、全球代購全面整合，建立難以被競爭對手複製的專業信任壁壘。</p>
+        </div>
+        <div class="hero-card">
+          <h3>營運目標</h3>
+          <p>三年營收達1.5億台幣、毛利率35-45%，鎖定台灣運動用品市場5%市佔率。</p>
+        </div>
+        <div class="hero-card">
+          <h3>投資簡報</h3>
+          <p>投資人簡報 | 2025年9月<br>SPORTS ECOSYSTEM PLATFORM</p>
+        </div>
+      </div>
+      <div class="contact-bar">
+        <span>📧 contact@sportseco.platfo</span>
+        <span>🌐 www.sportseco.platfo</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">EXECUTIVE SUMMARY</div>
+        <h2 class="section-title">執行摘要</h2>
+        <p class="section-subtitle">整合教練專業、創新供應鏈與全球資源的運動用品生態聚合平台。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>專案簡介</h4>
+          <p>聚焦網球、羽球、桌球等運動項目，以教練推薦打造專業信任，搭配寄賣供應模式、統一物流服務與全球代購，解決傳統通路與現有電商的痛點。</p>
+          <ul>
+            <li>多元運動用品交易平台，專業導購加速成交</li>
+            <li>供應商寄賣降低資金壓力，拓展品項廣度</li>
+            <li>全球代購與統一物流提升毛利率與體驗</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>目標市場與痛點</h4>
+          <ul>
+            <li>台灣運動用品市場規模 200 億台幣，網球 15-20 億、羽球 25-30 億</li>
+            <li>傳統通路面臨高庫存、高資金占用與品項受限</li>
+            <li>大型電商平台同質化、缺乏專業指導與信任機制</li>
+            <li>運動消費者追求專業建議與稀缺商品</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <p class="stat-value">1.5 億</p>
+          <p class="stat-label">三年營收目標（台幣）</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">35-45%</p>
+          <p class="stat-label">預估毛利率</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">5%</p>
+          <p class="stat-label">台灣市場目標市佔率</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">MARKET OVERVIEW</div>
+        <h2 class="section-title">市場機會｜台灣運動用品 200 億市場</h2>
+        <p class="section-subtitle">產業規模持續成長，運動科技與健康意識推動需求升級。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>產業現況</h4>
+          <ul>
+            <li>2024 年第一季產值 121 億元，年增 5.6%，結束連兩年負成長</li>
+            <li>出口導向：直接外銷比率超過 90%</li>
+            <li>中小企業主導：95.1% 企業員工數 199 人以下</li>
+            <li>地域集中：台中市佔全台產值 34.7%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>細分市場規模</h4>
+          <ul>
+            <li>網球市場：15-20 億台幣，年增率 4.2%</li>
+            <li>羽毛球市場：25-30 億台幣，年增率 6.5%</li>
+            <li>桌球市場：10-15 億台幣，年增率 3.8%</li>
+            <li>高爾夫用品佔產值 32.9%，2025 Q1 年增 24.1%</li>
+            <li>健身器材佔產值 34.8%</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h4>成長動因與趨勢</h4>
+        <div class="pill-list">
+          <span class="pill">運動健身風潮推升需求</span>
+          <span class="pill">運動科技與數位化</span>
+          <span class="pill">消費升級重視體驗</span>
+          <span class="pill">國際賽事帶動市場熱度</span>
+        </div>
+        <p>全球運動科技市場 2025 年規模預估 229.7 億美元，2024-2025 年 CAGR 達 21.9%。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">PROBLEM STATEMENT</div>
+        <h2 class="section-title">問題定義｜傳統通路與電商痛點</h2>
+        <p class="section-subtitle">庫存與資金壓力、專業服務缺口，造成市場明確缺位。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>傳統零售痛點</h4>
+          <ul>
+            <li>高庫存壓力：45% 店主認為庫存管理是最大挑戰，資金周轉需 90-120 天</li>
+            <li>資金積壓：預先備貨占用現金流，滯銷風險高</li>
+            <li>實體限制：展示品項僅 20-30%，難兼顧專業與休閒需求</li>
+            <li>經營困境：專賣店 3 年存活率僅 55%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>電商平台痛點</h4>
+          <ul>
+            <li>同質化競爭，價格戰導致毛利率從 25% 降至 18%</li>
+            <li>缺乏專業指導，67% 用戶購買前需要專家協助</li>
+            <li>用戶決策缺乏信任機制，專業玩家與休閒玩家需求未被滿足</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h4>目標用戶痛點</h4>
+        <div class="pill-list">
+          <span class="pill">專業玩家：尋找專業建議與特殊規格</span>
+          <span class="pill">品質消費者：擔憂選錯裝備</span>
+          <span class="pill">熱忱玩家：預算有限但追求高性價比</span>
+          <span class="pill">輕度用戶：價格敏感、偶爾消費</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">SOLUTION</div>
+        <h2 class="section-title">解決方案｜四大核心模式</h2>
+        <p class="section-subtitle">以專業信任、低資金風險、高效率物流與高毛利業務創造生態優勢。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>教練推薦銷售</h4>
+          <ul>
+            <li>教練實測產品並產出推薦內容</li>
+            <li>提供教練 18-25% 推薦商品分潤</li>
+            <li>建立專業信任壁壘，促成購買決策</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>寄賣供應模式</h4>
+          <ul>
+            <li>品牌寄賣，售出後再結算</li>
+            <li>平台無需預先採購，資金需求降低 70%</li>
+            <li>擴大商品品項與品牌合作深度</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>統一物流服務</h4>
+          <ul>
+            <li>集中入庫、配送與售後管理</li>
+            <li>規模化物流降低每單成本</li>
+            <li>提供一致的包裝與退換貨體驗</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>全球代購服務</h4>
+          <ul>
+            <li>海外採購稀缺或限量產品</li>
+            <li>無需備貨，訂單確認後再採購</li>
+            <li>維持 60-75% 高毛利</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <h4>整合優勢</h4>
+          <p>低資金風險、高專業信任與供需高效對接，形成競爭對手難以複製的商業模式。</p>
+          <span class="tag">專業信任 + 供應鏈創新</span>
+        </div>
+        <div class="comparison-card">
+          <h4>平台流程</h4>
+          <ul>
+            <li>教練評測 → 內容建立 → 用戶購買</li>
+            <li>品牌寄賣 → 平台展示 → 售出結算</li>
+            <li>統一入庫 → 集中配送 → 售後管理</li>
+            <li>用戶下單 → 海外採購 → 配送到客</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">BUSINESS MODEL</div>
+        <h2 class="section-title">商業模式｜營收構成與獲利</h2>
+        <p class="section-subtitle">多元營收來源搭配高毛利業務，創造差異化競爭優勢。</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <p class="stat-value">40%</p>
+          <p class="stat-label">平台銷售佣金（8-25%）</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">35%</p>
+          <p class="stat-label">全球代購服務費（25-35%）</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">15%</p>
+          <p class="stat-label">統一物流服務費</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">10%</p>
+          <p class="stat-label">教練推薦分潤與訂閱</p>
+        </div>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>營收結構優勢</h4>
+          <ul>
+            <li>寄賣模式大幅降低庫存資金占用</li>
+            <li>全球代購與教練推薦創造高毛利</li>
+            <li>物流整合提升營運效率，擴大規模效益</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>與傳統電商比較</h4>
+          <ul>
+            <li>毛利率：35-45% vs 15-25%</li>
+            <li>庫存資金占用：寄賣低風險 vs 高庫存</li>
+            <li>產品專業度：教練背書 vs 一般導購</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">GO-TO-MARKET</div>
+        <h2 class="section-title">市場策略｜客群矩陣與行銷規劃</h2>
+        <p class="section-subtitle">教練網絡擴張與數位行銷雙引擎，聚焦四大客群。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>客群象限分析</h4>
+          <ul>
+            <li>專業玩家：高時間、高消費，佔 15%</li>
+            <li>品質消費者：低時間、高消費，佔 25%</li>
+            <li>熱忱玩家：高時間、預算有限，佔 35%</li>
+            <li>輕度用戶：低時間、低消費，佔 25%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>行銷與拓展策略</h4>
+          <ul>
+            <li>教練合作計畫：第一年 100+ 教練，三年達 500+</li>
+            <li>社群與內容行銷：KOL 合作、教練專業內容與用戶評測</li>
+            <li>市場推進：網球、羽球起步 → 桌球、高爾夫 → 更多品項與國際市場</li>
+            <li>平台成長路徑：3 個月 MVP、12 個月 1 萬活躍用戶、24 個月市佔 5%</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">COMPETITIVE EDGE</div>
+        <h2 class="section-title">競爭優勢｜教練網絡壁壘</h2>
+        <p class="section-subtitle">專業圈層滲透與多層次激勵，打造難以取代的信任機制。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>教練網絡現況與目標</h4>
+          <ul>
+            <li>現有合作教練 150+，一年目標 500+，三年達 1,200+</li>
+            <li>會員推薦制度形成教練與學員忠誠循環</li>
+            <li>品牌大使與培訓認證，強化長期合作</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>差異化優勢</h4>
+          <ul>
+            <li>專業教練推薦信任機制</li>
+            <li>寄賣模式降低 70% 資金需求</li>
+            <li>高毛利全球代購服務</li>
+            <li>專業社群活動與設備試用</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">FINANCIALS</div>
+        <h2 class="section-title">財務預測｜三年營運規劃</h2>
+        <p class="section-subtitle">寄賣模式提升資金效率，毛利與營益率具吸引力。</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <p class="stat-value">NT$ 1.5 億</p>
+          <p class="stat-label">第三年營收目標</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">35-45%</p>
+          <p class="stat-label">預估毛利率區間</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">18-25%</p>
+          <p class="stat-label">營業利益率</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">2.5 年</p>
+          <p class="stat-label">投資回收期</p>
+        </div>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>寄賣模式財務優勢</h4>
+          <ul>
+            <li>傳統模式需 1,000 萬庫存資金，寄賣僅需 300 萬營運資金</li>
+            <li>資金效率提升 3.3 倍，庫存周轉率提升 40%</li>
+            <li>現金流壓力減少 65%，資金回報率提升 55%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>成本假設</h4>
+          <ul>
+            <li>平台開發與維運：年均 580 萬</li>
+            <li>行銷與教練網絡：首年 900 萬</li>
+            <li>物流中心建置：第一年 300 萬</li>
+            <li>人事成本：年均 1,000 萬</li>
+            <li>代購服務成本率：25-40%</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">FUNDRAISING</div>
+        <h2 class="section-title">資金需求｜投資用途與里程碑</h2>
+        <p class="section-subtitle">首輪募資 3,000 萬台幣，加速平台技術、行銷與物流佈局。</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <p class="stat-value">NT$ 3,000 萬</p>
+          <p class="stat-label">募資金額</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">NT$ 1.2 億</p>
+          <p class="stat-label">募資前估值</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">25%</p>
+          <p class="stat-label">股權釋出比例</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">3 年</p>
+          <p class="stat-label">預期資金回收期</p>
+        </div>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>資金用途</h4>
+          <ul>
+            <li>技術開發 40%：平台、推薦演算法、寄賣系統</li>
+            <li>市場行銷 30%：教練拓展、品牌建設、用戶獲取</li>
+            <li>物流系統 15%：倉儲與配送基礎建設</li>
+            <li>營運資金 15%：人事、辦公、法務會計</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>投資回報預期</h4>
+          <ul>
+            <li>第 3 年營收 1.5 億，年增率 80%+</li>
+            <li>淨利潤率 20-25%，第 2 年開始獲利</li>
+            <li>活躍用戶 10 萬+、主要運動項目市佔 5%</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">6 個月</div>
+          <div>平台上線，累積 1 萬名初期用戶</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">18 個月</div>
+          <div>達成收支平衡，教練網絡 100+</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">36 個月</div>
+          <div>擴展全台，主要運動項目市佔率達 5%</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">TEAM</div>
+        <h2 class="section-title">核心團隊</h2>
+        <p class="section-subtitle">跨運動產業、電商、科技與供應鏈的專業陣容。</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <h4>XXX</h4>
+          <div class="team-role">執行長 / 創辦人</div>
+          <div class="team-bio">前奧運網球國手教練（10 年）、台大體育系、美國體育管理碩士；國家級網球教練認證。專長：教練網絡建立、運動產業經營、賽事組織。</div>
+        </div>
+        <div class="team-card">
+          <h4>XXX</h4>
+          <div class="team-role">營運長</div>
+          <div class="team-bio">前電商平台營運總監（8 年），政大企管系、INSEAD MBA。曾帶領新創營收從 0 到 3 億。專長：平台營運策略、數位行銷、用戶成長。</div>
+        </div>
+        <div class="team-card">
+          <h4>XXX</h4>
+          <div class="team-role">技術總監</div>
+          <div class="team-bio">前跨國科技公司技術主管（12 年），台科大資工系、史丹福電腦碩士。主導百萬用戶平台開發。專長：平台架構、數據分析、AI 推薦。</div>
+        </div>
+        <div class="team-card">
+          <h4>專業顧問團隊</h4>
+          <div class="team-bio">涵蓋前國家羽球隊教練、供應鏈管理專家、電商法律專家、體育用品協會理事，提供器材顧問、採購、法務與產業資源整合支援。</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">ROADMAP</div>
+        <h2 class="section-title">發展藍圖｜短中長期目標</h2>
+        <p class="section-subtitle">第一年建立基礎、第三年穩健成長、第五年邁向市場領導。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>第 1 年｜建立基礎</h4>
+          <ul>
+            <li>月營收目標 120 萬台幣</li>
+            <li>平台上線、核心功能完成</li>
+            <li>簽約 50 位教練、20 家品牌寄賣合作</li>
+            <li>累積 10,000 名活躍用戶（網球、羽球）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>第 3 年｜穩健成長</h4>
+          <ul>
+            <li>月營收目標 500 萬台幣</li>
+            <li>AI 推薦與數據分析功能上線</li>
+            <li>教練合作擴至 200 位、品牌 50 家</li>
+            <li>新增桌球、高爾夫，活躍用戶 50,000 名</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>第 5 年｜市場領導</h4>
+          <ul>
+            <li>月營收目標 1,500 萬台幣</li>
+            <li>推出自有品牌商品與賽事直播社群</li>
+            <li>教練 500+、品牌 100+、涵蓋 8 大運動項目</li>
+            <li>用戶 200,000 名，拓展東南亞市場</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h4>產品與服務線延伸</h4>
+        <div class="pill-list">
+          <span class="pill">核心平台</span>
+          <span class="pill">教練課程媒合</span>
+          <span class="pill">賽事直播社群</span>
+          <span class="pill">自有品牌商品</span>
+          <span class="pill">國際市場拓展</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <div class="section-kicker">EVIDENCE</div>
+        <h2 class="section-title">附錄與數據支撐</h2>
+        <p class="section-subtitle">市場數據、技術驗證與競品分析證實商業模式可行。</p>
+      </div>
+      <div class="content-grid two-col">
+        <div class="card">
+          <h4>市場數據</h4>
+          <ul>
+            <li>總市場規模 200 億台幣：羽球 25-30 億、網球 15-20 億、桌球 10-15 億</li>
+            <li>2024 年產值 121 億元、年增 5.6%</li>
+            <li>台灣健身器材出口全球第 3，高爾夫球相關產品全球第 2</li>
+            <li>全球運動科技市場 2024 年達 188.5 億美元，年成長 21.9%</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>技術與法規驗證</h4>
+          <ul>
+            <li>平台符合 ISO 27001 資安標準</li>
+            <li>遵循電子商務消保與個資法規</li>
+            <li>Web / App 相容 98%，平均載入 0.5 秒</li>
+            <li>已獲 10 家品牌供應商合作意向</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>競品分析</h4>
+          <ul>
+            <li>傳統實體通路：品項有限、庫存成本高 → 寄賣模式優勢</li>
+            <li>大型電商：缺乏專業度 → 教練推薦建立信任</li>
+            <li>品牌官網：單一品牌 → 多品牌一站式</li>
+            <li>代購社群：缺乏售後 → 系統化代購 + 專業建議</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>市場驗證</h4>
+          <div class="quote">「教練推薦讓我更有信心選購合適的裝備，這是其他平台做不到的。」— 網球愛好者（3 年經驗）</div>
+          <div class="quote">「全球代購服務幫我找到台灣買不到的專業羽毛球鞋，省去自行代購的麻煩。」— 羽毛球教練（8 年經驗）</div>
+          <p>問卷調查顯示：87% 運動愛好者願意使用具有教練認證的平台；92% 教練願意參與推薦系統。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">
+    <p>聯絡我們｜contact@sports-ecosystem.com ｜ +886-2-2345-6789 ｜ 台北市信義區松智路 100 號</p>
+  </div>
+</body>
+</html>
