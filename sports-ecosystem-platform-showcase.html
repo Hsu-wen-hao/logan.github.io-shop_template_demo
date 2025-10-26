@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運動生態平台｜願景藍圖 Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f172a;
+      --ink-soft: #475569;
+      --primary: #1d4ed8;
+      --accent: #22d3ee;
+      --success: #16a34a;
+      --warning: #f97316;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --border: rgba(15, 23, 42, 0.08);
+      --radius-lg: 28px;
+      --radius: 20px;
+      --shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(4rem, 6vw, 6rem);
+      background: radial-gradient(120% 120% at 0% 0%, rgba(34, 211, 238, 0.18), transparent 45%),
+                  linear-gradient(140deg, rgba(29, 78, 216, 0.94), rgba(15, 23, 42, 0.94));
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 120% at 90% 15%, rgba(255, 255, 255, 0.35), transparent 55%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(1140px, 92vw);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .hero-topline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: 0.8;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.7rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-cta .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+
+    .hero-metrics {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .metric {
+      padding: 1.6rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(15, 23, 42, 0.28);
+      backdrop-filter: blur(12px);
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .metric span {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 600;
+    }
+
+    .metric strong {
+      font-size: clamp(1.8rem, 3.8vw, 2.3rem);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    section {
+      padding: clamp(3.5rem, 6vw, 5.2rem) 0;
+    }
+
+    section:nth-of-type(odd) {
+      background: var(--bg);
+    }
+
+    section:nth-of-type(even) {
+      background: #fff;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: clamp(2.2rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .section-head .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .section-head p {
+      margin: 0 auto;
+      max-width: 680px;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      display: grid;
+      gap: 0.75rem;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(34, 211, 238, 0.16);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.6rem;
+      display: grid;
+      gap: 0.35rem;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+    }
+
+    .stat span {
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .stat strong {
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .pillars {
+      display: grid;
+      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .pillar {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.8rem;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .pillar h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .roadmap {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .roadmap-stage {
+      padding: 1.8rem;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .roadmap-stage header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .roadmap-stage h3 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .roadmap-stage span {
+      color: var(--ink-soft);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .roadmap-stage ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--ink-soft);
+    }
+
+    .highlight-banner {
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 2.8rem);
+      background: linear-gradient(135deg, rgba(29, 78, 216, 0.92), rgba(34, 211, 238, 0.9));
+      color: #fff;
+      display: grid;
+      gap: 1rem;
+      text-align: center;
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
+    }
+
+    .highlight-banner h3 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 800;
+    }
+
+    .highlight-banner p {
+      margin: 0 auto;
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.05rem;
+    }
+
+    .team {
+      display: grid;
+      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .teammate {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 1.8rem;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .teammate h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .teammate span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .teammate p {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    .cta-footer {
+      padding: clamp(3rem, 5vw, 4.5rem) 0;
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .cta-footer .cta-inner {
+      display: grid;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .cta-footer h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      font-weight: 800;
+    }
+
+    .cta-footer p {
+      margin: 0 auto;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .cta-footer .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .cta-footer .cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(34, 211, 238, 0.15);
+    }
+
+    footer {
+      padding: 1.8rem 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero-topline {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        text-align: center;
+      }
+
+      .hero-subtitle {
+        text-align: center;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-topline">
+            <span>SPORTS ECOSYSTEM PLATFORM</span>
+            <span>INVESTOR SHOWCASE</span>
+          </div>
+          <h1>打造運動器材新世代生態聚合平台的願景藍圖</h1>
+          <p class="hero-subtitle">結合教練推薦、寄賣供應、統一物流與全球代購四大核心模式，瞄準台灣200億運動用品市場，開創高成長、高毛利的運動產業新典範。</p>
+          <div class="hero-cta">
+            <a class="pill" href="mailto:contact@sports-ecosystem.com">contact@sports-ecosystem.com</a>
+            <a class="pill" href="https://www.sportseco.platfo" target="_blank" rel="noopener">www.sportseco.platfo</a>
+            <span class="pill">投資人簡報｜2025年9月</span>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric">
+              <span>三年營收目標</span>
+              <strong>NT$ 1.5 億</strong>
+              <small>市佔率 5%，毛利率 35-45%</small>
+            </div>
+            <div class="metric">
+              <span>市場潛力</span>
+              <strong>NT$ 200 億</strong>
+              <small>聚焦網球、羽球、桌球核心族群</small>
+            </div>
+            <div class="metric">
+              <span>募資目標</span>
+              <strong>NT$ 3,000 萬</strong>
+              <small>釋股 25%，估值 1.2 億</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Mission</span>
+            <h2>專業信任驅動的運動用品整合平台</h2>
+            <p>運動生態平台結合教練專業推薦與輕資產寄賣模式，打造難以複製的信任壁壘與供應鏈效率，為專業與休閒玩家提供一站式服務體驗。</p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat">
+              <span>教練合作</span>
+              <strong>150+ 現有夥伴</strong>
+              <p>一年拓展至 500+，三年達 1,200+ 教練網絡。</p>
+            </div>
+            <div class="stat">
+              <span>供應商</span>
+              <strong>10 家意向</strong>
+              <p>寄賣模式降低 70% 資金壓力，吸引多品牌加入。</p>
+            </div>
+            <div class="stat">
+              <span>活躍用戶</span>
+              <strong>10 萬+</strong>
+              <p>三年內建立高度黏著的專業運動社群。</p>
+            </div>
+            <div class="stat">
+              <span>回收期</span>
+              <strong>2.5 年</strong>
+              <p>高毛利與低庫存風險帶來優異的資本效率。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Four Pillars</span>
+            <h2>四大核心模式打造差異化競爭力</h2>
+            <p>透過四大模式的有機整合，建立專業信任、高毛利與低資金風險的運動生態平台。</p>
+          </div>
+          <div class="pillars">
+            <div class="pillar">
+              <span class="badge">01 教練推薦</span>
+              <h3>專業教練評測背書</h3>
+              <p>教練親測推薦，提供 8-15% 分潤與專屬推薦碼，建立消費信任鏈。</p>
+            </div>
+            <div class="pillar">
+              <span class="badge">02 寄賣供應</span>
+              <h3>輕資產供應鏈</h3>
+              <p>品牌寄賣後結算，降低庫存資金 70%，擴充品項彈性。</p>
+            </div>
+            <div class="pillar">
+              <span class="badge">03 統一物流</span>
+              <h3>集中運營效率</h3>
+              <p>統一入庫、配送、售後管理，降低成本並優化體驗。</p>
+            </div>
+            <div class="pillar">
+              <span class="badge">04 全球代購</span>
+              <h3>60-75% 高毛利</h3>
+              <p>專業玩家海外採購，提供稀缺品項與客製化需求。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Opportunity</span>
+            <h2>鎖定 NT$200 億的台灣運動用品藍海</h2>
+            <p>運動科技升級與健康意識帶動需求，平台聚焦具成長動能的網球、羽球、桌球市場，並延伸至高爾夫與健身品類。</p>
+          </div>
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>市場規模</h3>
+              <p>台灣運動用品市場總規模約 NT$200 億，2024 年第一季產值達 121 億元，年增 5.6%。</p>
+            </div>
+            <div class="card">
+              <h3>品類成長</h3>
+              <p>羽球 25-30 億 (年增 6.5%)、網球 15-20 億 (年增 4.2%)、桌球 10-15 億 (年增 3.8%)。</p>
+            </div>
+            <div class="card">
+              <h3>產業優勢</h3>
+              <p>出口導向達 90%，中小企業 95% 主導，結合平台資源可快速串聯供應鏈與教練社群。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Business Model</span>
+            <h2>多元營收結構與高效資金運用</h2>
+            <p>結合銷售佣金、全球代購、統一物流與教練分潤，打造 35-45% 毛利的可持續商模。</p>
+          </div>
+          <div class="grid grid-2">
+            <div class="card">
+              <h3>四大營收來源</h3>
+              <ul>
+                <li>平台銷售佣金：一般商品 8-15%，教練推薦 18-25%</li>
+                <li>全球代購服務：銷售價 15-20% + 物流加價 10-15%</li>
+                <li>統一物流服務：倉儲費 + 配送服務加價 5-10%</li>
+                <li>教練推薦分潤：內容訂閱與專業指導 10-15%</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>財務亮點</h3>
+              <ul>
+                <li>寄賣模式 vs 傳統電商：資金需求降低 70%</li>
+                <li>全球代購毛利 60-75%，教練推薦提升轉換率</li>
+                <li>營運第二年開始獲利，投資回收期 2.5 年</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Traction</span>
+            <h2>里程碑與成長推進路徑</h2>
+            <p>以 MVP 上線為起點，透過教練網絡滲透、品牌合作與城市拓展，逐步擴大市場滲透率。</p>
+          </div>
+          <div class="roadmap">
+            <div class="roadmap-stage">
+              <header>
+                <h3>第 1 年｜建立基礎</h3>
+                <span>月營收 120 萬</span>
+              </header>
+              <ul>
+                <li>MVP 平台 3 個月內上線，導入 1 萬用戶</li>
+                <li>簽約 50 位專業教練，20 家品牌寄賣合作</li>
+                <li>聚焦台北及北部市場，主攻網球、羽球項目</li>
+              </ul>
+            </div>
+            <div class="roadmap-stage">
+              <header>
+                <h3>第 3 年｜穩健成長</h3>
+                <span>月營收 500 萬</span>
+              </header>
+              <ul>
+                <li>教練合作擴張至 200 位，全台主要城市覆蓋</li>
+                <li>新增桌球、高爾夫品項，活躍用戶 5 萬</li>
+                <li>推出 AI 推薦與數據分析，形成閉環服務</li>
+              </ul>
+            </div>
+            <div class="roadmap-stage">
+              <header>
+                <h3>第 5 年｜市場領導</h3>
+                <span>月營收 1,500 萬</span>
+              </header>
+              <ul>
+                <li>教練網絡 500+，進軍東南亞市場</li>
+                <li>推出自有品牌商品與賽事社群服務</li>
+                <li>活躍用戶 20 萬，涵蓋 8 大運動項目</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Funding</span>
+            <h2>募資計畫與資金用途</h2>
+            <p>首輪募資目標 NT$3,000 萬，釋股 25%，估值 1.2 億，以支援平台技術、教練網絡、物流與營運擴張。</p>
+          </div>
+          <div class="grid grid-2">
+            <div class="card">
+              <h3>資金配置</h3>
+              <ul>
+                <li>技術開發 40%：平台建設、教練推薦演算法、寄賣系統</li>
+                <li>市場行銷 30%：教練合作、品牌建設、用戶獲取</li>
+                <li>物流系統 15%：統一物流基礎建設與運作資金</li>
+                <li>營運資金 15%：人事、法務、辦公與行政</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>投資回報預期</h3>
+              <ul>
+                <li>第 2 年開始獲利，淨利潤率 20-25%</li>
+                <li>第 3 年營收 NT$1.5 億，年增長率 80%+</li>
+                <li>第 3 年活躍用戶 10 萬，市佔率 5%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Team</span>
+            <h2>跨領域核心團隊與專業顧問</h2>
+            <p>集結運動產業、電商營運、供應鏈管理與教練網絡專家，提供全方位的執行能力。</p>
+          </div>
+          <div class="team">
+            <div class="teammate">
+              <span>執行長 / 創辦人</span>
+              <h3>XXX</h3>
+              <p>前奧運網球國手教練 (10 年)，國家級網球教練認證，專長教練網絡建立、賽事組織。</p>
+            </div>
+            <div class="teammate">
+              <span>營運長</span>
+              <h3>XXX</h3>
+              <p>前電商營運總監 (8 年)，INSEAD MBA，帶領新創從 0 到年營收 3 億。</p>
+            </div>
+            <div class="teammate">
+              <span>技術總監</span>
+              <h3>XXX</h3>
+              <p>跨國科技公司技術主管 (12 年)，主導百萬用戶平台開發，擅長資料分析與 AI 推薦。</p>
+            </div>
+            <div class="teammate">
+              <span>專業顧問團隊</span>
+              <h3>羽球教練 / 供應鏈 / 法務 / 協會</h3>
+              <p>包含前國家羽球隊教練、供應鏈管理專家、電商法律顧問與體育用品協會資源整合顧問。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="highlight-banner">
+            <h3>打造無可取代的專業運動生態圈</h3>
+            <p>透過教練信任機制、寄賣供應鏈、全球代購與統一物流的協同運作，我們將運動用品消費體驗全面升級，創造穩健成長與可觀回報。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="cta-footer">
+      <div class="container">
+        <div class="cta-inner">
+          <h2>準備好與我們一起開啟運動產業新篇章？</h2>
+          <p>聯繫運動生態平台團隊，了解更多投資資訊與合作機會。</p>
+          <div class="cta-actions">
+            <a class="cta-pill" href="mailto:contact@sports-ecosystem.com">Email｜contact@sports-ecosystem.com</a>
+            <a class="cta-pill" href="tel:+886223456789">Phone｜+886-2-2345-6789</a>
+            <span class="cta-pill">地址｜台北市信義區松智路 100 號</span>
+          </div>
+        </div>
+      </div>
+      <footer>
+        © 2025 運動生態平台 Sports Ecosystem Platform. All rights reserved.
+      </footer>
+    </section>
+  </div>
+</body>
+</html>
